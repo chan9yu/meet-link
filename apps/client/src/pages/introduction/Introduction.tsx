@@ -11,7 +11,7 @@ export default function Introduction() {
 
 	useEffect(() => {
 		dispath(setIsRoomHost(false));
-	}, []);
+	}, [dispath]);
 
 	return (
 		<div className="introduction_page_container">

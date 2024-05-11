@@ -18,7 +18,7 @@ export default function JoinRoom() {
 		if (isRoomHost) {
 			dispatch(setIsRoomHost(true));
 		}
-	}, []);
+	}, [dispatch, search]);
 
 	return (
 		<div className="join_room_page_container">

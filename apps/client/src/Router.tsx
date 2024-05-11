@@ -1,4 +1,4 @@
-import { Navigate, RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter, type RouteObject } from 'react-router-dom';
 
 import { RouterPath } from './constants/router';
 import AppLayout from './layouts/AppLayout';

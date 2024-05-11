@@ -1,5 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		/* Projects */
 		"incremental": true,
@@ -20,21 +21,7 @@
 
 		/* Interop Constraints */
 		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": false,
-
-		/* Type Checking */
-		"strict": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"strictBindCallApply": false,
-		"strictPropertyInitialization": false,
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": false,
-
-		/* Completeness */
-		"skipLibCheck": true
+		"forceConsistentCasingInFileNames": false
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "test", "dist", "**/*spec.ts"]

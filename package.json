@@ -8,6 +8,47 @@
 		"type": "git",
 		"url": "https://github.com/chan9yu/webrtc-advanced"
 	},
-	"scripts": {},
-	"devDependencies": {}
+	"lint-staged": {
+		"**/*.{ts,tsx}": [
+			"eslint --fix",
+			"prettier --write"
+		]
+	},
+	"config": {
+		"cz-customizable": {
+			"config": "./config/cz-config.cjs"
+		}
+	},
+	"scripts": {
+		"client": "pnpm --filter @webrtc-advanced/client",
+		"server": "pnpm --filter @webrtc-advanced/server",
+		"types": "pnpm --filter @webrtc-advanced/types",
+		"dev:client": "pnpm --filter @webrtc-advanced/client dev",
+		"dev:server": "pnpm --filter @webrtc-advanced/server start:dev",
+		"dev:types": "pnpm --filter @webrtc-advanced/server start:types",
+		"build:client": "pnpm --filter @webrtc-advanced/client build",
+		"build:server": "pnpm --filter @webrtc-advanced/server build",
+		"build:types": "pnpm --filter @webrtc-advanced/server types",
+		"commit": "./node_modules/cz-customizable/standalone.js",
+		"clean:modules": "./scripts/clean-modules.sh",
+		"prepare": "husky install",
+		"husky:permission": "chmod +x .husky/*"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.3.0",
+		"@commitlint/config-conventional": "^19.2.2",
+		"@typescript-eslint/eslint-plugin": "^7.8.0",
+		"@typescript-eslint/parser": "^7.8.0",
+		"commitizen": "^4.3.0",
+		"conventional-changelog-conventionalcommits": "^8.0.0",
+		"cz-customizable": "6.3.0",
+		"eslint": "8",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-prettier": "^5.1.3",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.2",
+		"prettier": "^3.2.5",
+		"typescript": "^5.4.5"
+	}
 }

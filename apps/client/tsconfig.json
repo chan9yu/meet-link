@@ -1,7 +1,10 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "Base",
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
+		/* Projects */
+		"jsx": "react-jsx",
+
 		/* Language and Environment */
 		"target": "ESNext",
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -24,18 +27,8 @@
 		"isolatedModules": true,
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-
-		/* Type Checking */
-		"strict": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-
-		/* Completeness */
-		"skipLibCheck": true
-	}
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": ["src"],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }
