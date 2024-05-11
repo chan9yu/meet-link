@@ -1,14 +1,13 @@
 {
-  "name": "webrtc-advanced",
-  "private": true,
-  "version": "0.0.1",
-  "description": "💻 WebRTC advanced repository.",
-  "author": "chan9yu <wry5533@gmail.com>",
-  "packageManager": "pnpm@8.15.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chan9yu/webrtc-advanced"
-  },
-  "scripts": {},
-  "devDependencies": {}
+	"name": "webrtc-advanced",
+	"private": true,
+	"description": "💻 WebRTC advanced repository.",
+	"author": "chan9yu <wry5533@gmail.com>",
+	"packageManager": "pnpm@9.1.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chan9yu/webrtc-advanced"
+	},
+	"scripts": {},
+	"devDependencies": {}
 }
