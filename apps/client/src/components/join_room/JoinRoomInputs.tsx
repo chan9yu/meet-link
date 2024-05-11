@@ -4,21 +4,21 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
 type JoinRoomInputsProps = {
-	nameValue: string;
-	roomIdValue: string;
-	setNameValue: Dispatch<SetStateAction<string>>;
-	setRoomIdValue: Dispatch<SetStateAction<string>>;
+	nickname: string;
+	roomId: string;
+	setNickname: Dispatch<SetStateAction<string>>;
+	setRoomId: Dispatch<SetStateAction<string>>;
 };
 
-export default function JoinRoomInputs({ nameValue, roomIdValue, setNameValue, setRoomIdValue }: JoinRoomInputsProps) {
+export default function JoinRoomInputs({ nickname, roomId, setNickname, setRoomId }: JoinRoomInputsProps) {
 	const isRoomHost = useSelector((state: RootState) => state.isRoomHost);
 
-	const handleRoomIdValueChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setRoomIdValue(event.target.value);
+	const handleRoomIdChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setRoomId(event.target.value);
 	};
 
-	const handleNameValueChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setNameValue(event.target.value);
+	const handleNicknameChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setNickname(event.target.value);
 	};
 
 	return (
@@ -27,15 +27,15 @@ export default function JoinRoomInputs({ nameValue, roomIdValue, setNameValue, s
 				<input
 					className="join_room_input"
 					placeholder="Enter meeting ID"
-					value={roomIdValue}
-					onChange={handleRoomIdValueChange}
+					value={roomId}
+					onChange={handleRoomIdChange}
 				/>
 			)}
 			<input
 				className="join_room_input"
 				placeholder="Enter your Name"
-				value={nameValue}
-				onChange={handleNameValueChange}
+				value={nickname}
+				onChange={handleNicknameChange}
 			/>
 		</div>
 	);

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
-import { RouterPath } from '../../constants/router';
+import useRoomConnect from '../../hooks/useRoomConnect';
 import { RootState } from '../../store';
 import { setIdentity } from '../../store/actions';
 import ErrorMessage from './ErrorMessage';
@@ -11,41 +10,27 @@ import JoinRoomInputs from './JoinRoomInputs';
 import OnlyWithAudioCheckbox from './OnlyWithAudioCheckbox';
 
 export default function JoinRoomContent() {
-	const navigate = useNavigate();
-
 	const dispatch = useDispatch();
 	const isRoomHost = useSelector((state: RootState) => state.isRoomHost);
 
-	const [roomIdValue, setRoomIdValue] = useState('');
-	const [nameValue, setNameValue] = useState('');
-	const [errorMessage, setErrorMessage] = useState<string | null>(null);
+	const [roomId, setRoomId] = useState('');
+	const [nickname, setNickname] = useState('');
 
-	const createRoom = () => {
-		navigate(RouterPath.ROOM);
-	};
-
-	const joinRoom = async () => {
-		setErrorMessage('Meeting not found. Check your meeting id.');
-	};
+	const { createRoom, joinRoom, errorMessage } = useRoomConnect();
 
 	const handleJoinRoom = async () => {
-		dispatch(setIdentity(nameValue));
+		dispatch(setIdentity(nickname));
 
 		if (isRoomHost) {
 			createRoom();
 		} else {
-			await joinRoom();
+			await joinRoom(roomId);
 		}
 	};
 
 	return (
 		<>
-			<JoinRoomInputs
-				roomIdValue={roomIdValue}
-				setRoomIdValue={setRoomIdValue}
-				nameValue={nameValue}
-				setNameValue={setNameValue}
-			/>
+			<JoinRoomInputs roomId={roomId} setRoomId={setRoomId} nickname={nickname} setNickname={setNickname} />
 			<OnlyWithAudioCheckbox />
 			<ErrorMessage errorMessage={errorMessage} />
 			<JoinRoomButtons handleJoinRoom={handleJoinRoom} />
