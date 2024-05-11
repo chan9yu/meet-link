@@ -1,0 +1,41 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		/* Projects */
+		"incremental": true,
+
+		/* Language and Environment */
+		"target": "ES2021",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+
+		/* Modules */
+		"module": "commonjs",
+
+		/* Emit */
+		"declaration": true,
+		"sourceMap": true,
+		"outDir": "./dist",
+		"removeComments": true,
+
+		/* Interop Constraints */
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": false,
+
+		/* Type Checking */
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictBindCallApply": false,
+		"strictPropertyInitialization": false,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": false,
+
+		/* Completeness */
+		"skipLibCheck": true
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+}
