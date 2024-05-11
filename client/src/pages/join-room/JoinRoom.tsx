@@ -13,8 +13,6 @@ export default function JoinRoom() {
 	const dispatch = useDispatch();
 	const isRoomHost = useSelector((state: RootState) => state.isRoomHost);
 
-	const titleText = isRoomHost ? 'Host meeting' : 'Join meeting';
-
 	useEffect(() => {
 		const isRoomHost = new URLSearchParams(search).get('host');
 		if (isRoomHost) {
@@ -25,7 +23,7 @@ export default function JoinRoom() {
 	return (
 		<div className="join_room_page_container">
 			<div className="join_room_page_panel">
-				<p className="join_room_title">{titleText}</p>
+				<p className="join_room_title">{isRoomHost ? 'Host meeting' : 'Join meeting'}</p>
 				<JoinRoomContent />
 			</div>
 		</div>

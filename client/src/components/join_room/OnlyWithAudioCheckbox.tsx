@@ -13,9 +13,9 @@ export default function OnlyWithAudioCheckbox() {
 	};
 
 	return (
-		<div className="checkbox_container">
-			<div className="checkbox_connection" onClick={handleToogleConnectionType}>
-				{connectOnlyWithAudio && <img src={check_img} alt="checkbox_image" className="checkbox_image" />}
+		<div className="checkbox_container" onClick={handleToogleConnectionType}>
+			<div className="checkbox_connection">
+				{connectOnlyWithAudio && <img src={check_img} alt="check" className="checkbox_image" />}
 			</div>
 			<p className="checkbox_container_paragraph">Only audio</p>
 		</div>

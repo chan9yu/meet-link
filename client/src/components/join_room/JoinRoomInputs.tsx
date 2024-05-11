@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
 type JoinRoomInputsProps = {
-	nameValue: any;
+	nameValue: string;
 	roomIdValue: string;
 	setNameValue: Dispatch<SetStateAction<string>>;
 	setRoomIdValue: Dispatch<SetStateAction<string>>;

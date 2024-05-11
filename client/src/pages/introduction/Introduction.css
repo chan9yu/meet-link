@@ -32,7 +32,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
 	border-radius: 8px;
 	transition: 0.3s;
 	width: 180px;
