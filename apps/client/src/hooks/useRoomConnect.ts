@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { getRoomExists } from '../apis';
 import { RouterPath } from '../constants/router';
+import { setRoomId } from '../store/actions';
 
 export default function useRoomConnect() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -24,6 +27,7 @@ export default function useRoomConnect() {
 			return setErrorMessage('Meeting is full. Please try again later.');
 		}
 
+		dispatch(setRoomId(roomId));
 		navigate(RouterPath.ROOM);
 	};
 
