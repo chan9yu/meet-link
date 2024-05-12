@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { RoomExistsResponse } from '@webrtc-advanced/types';
+import type { RoomExistsResponse } from './model';
 
 const SERVER_URL = 'http://localhost:8080/api' as const;
 

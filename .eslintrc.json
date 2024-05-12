@@ -1,11 +1,27 @@
 {
+	"root": true,
+	"env": {
+		"browser": true,
+		"es2020": true
+	},
+	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
-		}
+		},
+		"ecmaVersion": 2022,
+		"sourceType": "module"
 	},
-	"extends": ["../../.eslintrc.js", "plugin:react/recommended", "plugin:react-hooks/recommended"],
-	"plugins": ["react", "react-hooks", "jsx-a11y"],
+	"extends": [
+		"prettier",
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:import/recommended",
+		"plugin:prettier/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"plugins": ["react", "react-hooks", "jsx-a11y", "@typescript-eslint"],
 	"settings": {
 		"react": {
 			"version": "detect"

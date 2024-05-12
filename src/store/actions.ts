@@ -1,4 +1,4 @@
-import { User } from '@webrtc-advanced/types';
+import { User } from './reducer';
 
 export const actions = {
 	SET_CONNECT_ONLY_WITH_AUDIO: 'SET_CONNECT_ONLY_WITH_AUDIO',

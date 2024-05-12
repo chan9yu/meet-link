@@ -1,46 +1,28 @@
 # dependencies
-**/node_modules
-**/.pnp
-**/.pnp.js
+node_modules
+.pnp
+.pnp.js
 
 # testing
-**/coverage
-**/.nyc_output
+coverage
 
-# build & production
-**/*.min.js
-**/*.min.css
-**/build
-**/dist
+# build
+storybook-static
+*.min.js
+*.min.css
+
+# production
+build
+dist
 
 # misc
-**/.DS_Store
-**/.env.local
-**/.env.development.local
-**/.env.test.local
-**/.env.production.local
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Logs
-**/logs
-**/*.log
-**/npm-debug.log*
-**/pnpm-debug.log*
-**/yarn-debug.log*
-**/yarn-error.log*
-**/lerna-debug.log*
-
-# IDEs and editors
-**/.idea
-**/.project
-**/.classpath
-**/.c9/
-**/*.launch
-**/.settings/
-**/*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,7 +1,12 @@
-import type { User } from '@webrtc-advanced/types';
 import { produce } from 'immer';
-
 import { ActionType, actions } from './actions';
+
+export type User = {
+	id: string;
+	identity: string;
+	roomId: string;
+	socketId: string;
+};
 
 type InitialState = {
 	connectOnlyWithAudio: boolean;
