@@ -88,19 +88,19 @@ class SocketManager {
 		return SocketManager.instance;
 	}
 
-	public createRoom(identity: string) {
+	public sendCreateRoom(identity: string) {
 		const data = { identity };
 		console.log(`>>> send ${SocketManager.events.CREATE_ROOM}: ${JSON.stringify(data, null, 2)}`);
 		this.socket.emit(SocketManager.events.CREATE_ROOM, data);
 	}
 
-	public joinRoom(identity: string, roomId: string) {
+	public sendJoinRoom(identity: string, roomId: string) {
 		const data = { identity, roomId };
 		console.log(`>>> send ${SocketManager.events.JOIN_ROOM}: ${JSON.stringify(data, null, 2)}`);
 		this.socket.emit(SocketManager.events.JOIN_ROOM, data);
 	}
 
-	public signalPeerData(signal: SignalData, socketId: string) {
+	public sendConnectionSignal(signal: SignalData, socketId: string) {
 		const data = { signal, socketId };
 		console.log(`>>> send ${SocketManager.events.CONNECTION_SIGNAL}: ${JSON.stringify(data, null, 2)}`);
 		this.socket.emit(SocketManager.events.CONNECTION_SIGNAL, data);

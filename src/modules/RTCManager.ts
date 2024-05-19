@@ -106,11 +106,11 @@ class RTCManager {
 	) {
 		try {
 			const stream = await navigator.mediaDevices.getUserMedia(DEFAULT_CONSTRAINTS);
-			console.log('successfuly received local stream');
+			console.log('successfully received local stream');
 			this.localStream = stream;
 			this.showLocalVideoPreview(stream);
 			store.dispatch(setShowOverlay(false));
-			isRoomHost ? socketManager.createRoom(identity) : socketManager.joinRoom(identity, roomId as string);
+			isRoomHost ? socketManager.sendCreateRoom(identity) : socketManager.sendJoinRoom(identity, roomId as string);
 		} catch (error) {
 			console.error('error doccurred when trying to get an access to local stream');
 			console.error(error);
@@ -127,7 +127,7 @@ class RTCManager {
 		});
 
 		this.peers[socketId].on('signal', signal => {
-			socketManager.signalPeerData(signal, socketId);
+			socketManager.sendConnectionSignal(signal, socketId);
 		});
 
 		this.peers[socketId].on('stream', stream => {
