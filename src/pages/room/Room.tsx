@@ -6,8 +6,8 @@ import RoomLabel from '../../components/room/RoomLabel';
 import ChatSection from '../../components/room/chat/ChatSection';
 import ParticipantsSection from '../../components/room/participants/ParticipantsSection';
 import VideoSection from '../../components/room/video/VideoSection';
+import { rtcManager } from '../../modules/RTCManager';
 import { RootState } from '../../store';
-import { getLocalPreviewAndInitRoomConnection } from '../../utils/webRTCHandler';
 import './Room.css';
 
 export default function Room() {
@@ -17,7 +17,7 @@ export default function Room() {
 	const showOverlay = useSelector((state: RootState) => state.showOverlay);
 
 	useEffect(() => {
-		getLocalPreviewAndInitRoomConnection(identity, isRoomHost, roomId);
+		rtcManager.getLocalPreviewAndInitRoomConnection(identity, isRoomHost, roomId);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
