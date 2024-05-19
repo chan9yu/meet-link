@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import Overlay from '../../components/room/Overlay';
@@ -11,13 +11,18 @@ import { RootState } from '../../store';
 import './Room.css';
 
 export default function Room() {
+	const didMountRef = useRef(false);
+
 	const identity = useSelector((state: RootState) => state.identity);
 	const isRoomHost = useSelector((state: RootState) => state.isRoomHost);
 	const roomId = useSelector((state: RootState) => state.roomId);
 	const showOverlay = useSelector((state: RootState) => state.showOverlay);
 
 	useEffect(() => {
-		rtcManager.getLocalPreviewAndInitRoomConnection(identity, isRoomHost, roomId);
+		if (!didMountRef.current) {
+			rtcManager.getLocalPreviewAndInitRoomConnection(identity, isRoomHost, roomId);
+			didMountRef.current = true;
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
