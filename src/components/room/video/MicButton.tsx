@@ -13,13 +13,8 @@ export default function MicButton() {
 	};
 
 	return (
-		<div className="video_button_container">
-			<img
-				src={isMicMuted ? mic_off_svg : mic_svg}
-				alt="audio_toggle_button"
-				className="video_button_image"
-				onClick={handleMicButtonPressed}
-			/>
+		<div className="video_button_container" onClick={handleMicButtonPressed}>
+			<img src={isMicMuted ? mic_off_svg : mic_svg} alt="audio_toggle_button" className="video_button_image" />
 		</div>
 	);
 }

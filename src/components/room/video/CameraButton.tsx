@@ -13,12 +13,11 @@ export default function CameraButton() {
 	};
 
 	return (
-		<div className="video_button_container">
+		<div className="video_button_container" onClick={handleCameraButtonPressed}>
 			<img
 				src={isLocalVideoDisabled ? camera_off_svg : camera_svg}
 				alt="video_toggle_button"
 				className="video_button_image"
-				onClick={handleCameraButtonPressed}
 			/>
 		</div>
 	);
