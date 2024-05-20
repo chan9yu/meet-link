@@ -2,7 +2,8 @@ import type { Instance as PeerInstance, SignalData } from 'simple-peer';
 import Peer from 'simple-peer';
 
 import store from '../store';
-import { setShowOverlay } from '../store/actions';
+import { setMessages, setShowOverlay } from '../store/actions';
+import type { Message } from '../store/reducer';
 import { socketManager } from './SocketManager';
 
 type SimplePeers = {
@@ -110,6 +111,11 @@ class RTCManager {
 		});
 	}
 
+	private appendNewMessage(messageData: Message) {
+		const message = store.getState().messages;
+		store.dispatch(setMessages([...message, messageData]));
+	}
+
 	public async getLocalPreviewAndInitRoomConnection(
 		identity: string,
 		isRoomHost: boolean,
@@ -134,7 +140,8 @@ class RTCManager {
 		this.peers[socketId] = new Peer({
 			initiator: isInitiator,
 			config: configuration,
-			stream: this.localStream
+			stream: this.localStream,
+			channelName: 'messenger'
 		});
 
 		this.peers[socketId].on('signal', signal => {
@@ -145,6 +152,11 @@ class RTCManager {
 			console.log('new stream came');
 			this.addSteram(stream, socketId);
 			this.streams = [...this.streams, stream];
+		});
+
+		this.peers[socketId].on('data', data => {
+			const messageData = JSON.parse(data);
+			this.appendNewMessage(messageData);
 		});
 	}
 
@@ -183,6 +195,28 @@ class RTCManager {
 			this.switchVideoTracks(this.localStream);
 		} else {
 			screenSharingStream && this.switchVideoTracks(screenSharingStream);
+		}
+	}
+
+	public sendMessageUsingDataChannel(messageContent: string) {
+		const identity = store.getState().identity;
+
+		const localMessageData: Message = {
+			content: messageContent,
+			identity,
+			messageCreatedByMe: true
+		};
+
+		this.appendNewMessage(localMessageData);
+
+		const messageData: Message = {
+			content: messageContent,
+			identity,
+			messageCreatedByMe: false
+		};
+
+		for (const socketId in this.peers) {
+			this.peers[socketId].send(JSON.stringify(messageData));
 		}
 	}
 }
