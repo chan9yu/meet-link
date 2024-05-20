@@ -2,11 +2,13 @@ import { useState } from 'react';
 
 import camera_svg from '../../../assets/svgs/camera.svg';
 import camera_off_svg from '../../../assets/svgs/cameraOff.svg';
+import { rtcManager } from '../../../modules/RTCManager';
 
 export default function CameraButton() {
 	const [isLocalVideoDisabled, setIsLocalVideoDisabled] = useState(false);
 
 	const handleCameraButtonPressed = () => {
+		rtcManager.toggleVideo(isLocalVideoDisabled);
 		setIsLocalVideoDisabled(prev => !prev);
 	};
 

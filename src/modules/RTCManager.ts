@@ -99,6 +99,17 @@ class RTCManager {
 		videosContainer?.appendChild(videoContainer);
 	}
 
+	private switchVideoTracks(stream: MediaStream) {
+		stream.getTracks().forEach(newTrack => {
+			for (const socketId in this.peers) {
+				const peerStream = this.peers[socketId].streams[0];
+				const peerTracks = peerStream.getTracks();
+				const matchingTrack = peerTracks.find(peerTrack => peerTrack.kind === newTrack.kind);
+				matchingTrack && this.peers[socketId].replaceTrack(matchingTrack, newTrack, peerStream);
+			}
+		});
+	}
+
 	public async getLocalPreviewAndInitRoomConnection(
 		identity: string,
 		isRoomHost: boolean,
@@ -156,6 +167,22 @@ class RTCManager {
 
 			this.peers[socketId] && this.peers[socketId].destroy();
 			delete this.peers[socketId];
+		}
+	}
+
+	public toggleAudio(enabled: boolean) {
+		this.localStream.getAudioTracks()[0].enabled = enabled;
+	}
+
+	public toggleVideo(enabled: boolean) {
+		this.localStream.getVideoTracks()[0].enabled = enabled;
+	}
+
+	public toggleScreenShare(isScreenSharingActive: boolean, screenSharingStream: MediaStream | null = null) {
+		if (isScreenSharingActive) {
+			this.switchVideoTracks(this.localStream);
+		} else {
+			screenSharingStream && this.switchVideoTracks(screenSharingStream);
 		}
 	}
 }
