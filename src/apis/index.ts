@@ -9,11 +9,6 @@ const axiosInstance = axios.create({
 });
 
 export const getRoomExists = async (roomId: string): Promise<RoomExistsResponse> => {
-	const response = await axiosInstance.get(`/room-exists/${roomId}`);
-	return response.data;
-};
-
-export const getTURNCredentials = async (): Promise<string> => {
-	const response = await axiosInstance.get(`/get-turn-credentials`);
+	const response = await axiosInstance.get(`/rooms/exists/${roomId}`);
 	return response.data;
 };
