@@ -5,7 +5,7 @@
 	"type": "module",
 	"description": "🖥️ simple meet app with react",
 	"author": "chan9yu <wry5533@gmail.com>",
-	"packageManager": "pnpm@9.2.0",
+	"packageManager": "pnpm@9.3.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/chan9yu/simple-meet_app"
