@@ -20,7 +20,13 @@ export default function Room() {
 
 	useEffect(() => {
 		if (!didMountRef.current) {
-			rtcManager.getLocalPreviewAndInitRoomConnection(identity, isRoomHost, roomId);
+			if (!isRoomHost && !roomId) {
+				const siteUrl = window.location.origin;
+				window.location.href = siteUrl;
+			} else {
+				rtcManager.getLocalPreviewAndInitRoomConnection(identity, isRoomHost, roomId);
+			}
+
 			didMountRef.current = true;
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
