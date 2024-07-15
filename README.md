@@ -1,14 +1,16 @@
 <a name="readme-top"></a>
 
-# Simple Meet App
+# 🔗 Meet Link
 
-> 🖥️ simple meet app with react
+> 🖥️ 실시간 채팅, 화면 공유, 및 미디어 통화를 제공하는 React 기반의 MeetLink App.
+> <br />
+> 원격 커뮤니케이션을 위한 앱 서비스입니다.
 
 <br />
 
 ## 🔗 Link
 
-- <a href="https://github.com/chan9yu/simple-meet_server" target="_blank" rel="noreferrer">SERVER 레포지토리</a>
+- <a href="https://github.com/chan9yu/meet-link_server" target="_blank" rel="noreferrer">Server Repository</a>
 
 <p align="right">
   <a href="#readme-top">맨 위로</a>
@@ -44,6 +46,7 @@ npm -g install pnpm
 
 ```shell
 # .nvmrc 기준 node version 설치
+# nvm을 사용하지 않는다면 수동으로 노드버전을 맞춰주세요.
 nvm use
 ```
 
@@ -52,13 +55,13 @@ nvm use
 1. 프로젝트 클론
 
 ```shell
-git clone https://github.com/chan9yu/simple-meet_app
+git clone https://github.com/chan9yu/meet-link
 ```
 
 2. 프로젝트 디렉토리로 이동
 
 ```shell
-cd simple-meet_app
+cd meet-link
 ```
 
 3. 종속성 설치
@@ -71,6 +74,30 @@ pnpm install
 
 ```
 pnpm dev
+```
+
+<p align="right">
+  <a href="#readme-top">맨 위로</a>
+</p>
+
+## ✨ Features
+
+- 실시간 채팅
+- 화면 공유
+- 미디어 통화
+- 사용자 관리
+- 채팅 기록 저장
+
+<p align="right">
+  <a href="#readme-top">맨 위로</a>
+</p>
+
+## ⚙️ Environment Variables
+
+환경 변수를 설정하는 방법입니다.
+
+```shell
+# .env.example 기준으로 .env 파일 생성
 ```
 
 <p align="right">
