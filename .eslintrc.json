@@ -33,11 +33,11 @@
 		}
 	},
 	"rules": {
-		"react-hooks/rules-of-hooks": "error",
-		"react/no-unknown-property": ["error", { "ignore": ["css"] }],
 		"@typescript-eslint/no-unused-vars": "warn",
+		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
-		"no-unused-vars": "warn",
-		"react/react-in-jsx-scope": "off"
+		"react/no-unknown-property": ["error", { "ignore": ["css"] }],
+		"react/react-in-jsx-scope": "off",
+		"no-unused-vars": "warn"
 	}
 }
