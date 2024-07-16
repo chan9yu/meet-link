@@ -1,1 +1,1 @@
-export { default } from './Wait.lazy';
+export { default } from './Wait';

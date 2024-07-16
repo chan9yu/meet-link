@@ -1,23 +1,33 @@
 import { Suspense } from 'react';
-import { Navigate, RouterProvider, createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, type RouteObject } from 'react-router-dom';
 
-import { AppLayout } from './components/layouts';
+import AppLayout from './components/layouts/AppLayout';
 import * as P from './pages';
 
 export enum RouterPath {
-	ROOT = '/',
-	WAIT = `/`,
-	VIEWER = `/viewer`
+	ROOT = `/`,
+	HOME = `/`,
+	LOUNGE = `/lounge`,
+	ROOM = `/room`,
+	WAIT = `/wait`
 }
 
 const appObject: RouteObject[] = [
 	{
-		path: RouterPath.WAIT,
-		element: <P.Wait />
+		path: RouterPath.HOME,
+		element: <P.Home />
 	},
 	{
-		path: RouterPath.VIEWER,
-		element: <P.Viewer />
+		path: RouterPath.LOUNGE,
+		element: <P.Lounge />
+	},
+	{
+		path: RouterPath.ROOM,
+		element: <P.Room />
+	},
+	{
+		path: RouterPath.WAIT,
+		element: <P.Wait />
 	}
 ];
 
@@ -26,7 +36,7 @@ const routeObject: RouteObject[] = [
 		path: RouterPath.ROOT,
 		element: <AppLayout />,
 		children: appObject,
-		errorElement: <Navigate to={RouterPath.ROOT} />
+		errorElement: <div>Error.</div>
 	}
 ];
 
